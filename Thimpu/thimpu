@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+    stages {
+        stage('git checkout') {
+            steps {
+                echo 'checkout from git repo';
+                git 'https://github.com/punnya1996/bhutan.git'
+            }
+        }
+        stage('build') {
+            steps {
+                echo 'building the check-out project';
+                bat 'bhutan.txt'
+            }
+        }
+        stage('unit-Test') {
+            steps {
+                echo 'Runing unit-Test';
+                bat 'bhutan1.txt'
+            }
+        }
+        stage('deploy') {
+            steps {
+                echo 'ready for deploy';
+                bat 'bhutan2.txt'
+            }
+        }
+        stage('production') {
+            steps {
+                echo 'ready for production';
+                bat 'punnya.txt'
+            }
+        }
+    }
+}
